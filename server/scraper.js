@@ -26,12 +26,15 @@ const fetchData = (url, limit) => {
           });
         }
       });
-
       save(data);
     })
     .on('end', (err) => {
       if (err) return console.error('connection closed due to error', err);
     });
+
+  //return out data here. Need to figure out a way to wait for data to be loaded before returning it out
+  //returning the variable data as aplace holder for where I want to return out information
+  return data;
 };
 
 module.exports = fetchData;

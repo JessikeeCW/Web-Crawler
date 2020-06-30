@@ -8,8 +8,8 @@ const Card = ({ index, title, url}) => {
       <div className="col-sm-11">
         <div className="card  m-2" key={index}>
           <div className="card-body">
-            <a className="card-title" href={url}>
-              {title}
+            <a className="card-text" href={url}>
+              {/* {title} */} {url}
             </a>
           </div>
         </div>
@@ -17,4 +17,6 @@ const Card = ({ index, title, url}) => {
     </div>
   );
 };
+
+//The title was commented out and url was put as a visual place holder until I got the variables I needed from the backend from the scraped urls
 export default Card;

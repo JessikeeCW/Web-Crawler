@@ -17,8 +17,8 @@ const App = () => {
       setLimit(e.target.value);
     }
   };
-  
-//onsubmit fetch the new route and post the information to the db
+
+  //onsubmit fetch the new route and post the information to the db
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch('http:///localhost:8000/search', {
@@ -55,9 +55,10 @@ const App = () => {
           <input type="submit" value="submit" className="btn btn-outline-info" />
         </div>
       </form>
-      <Card />
+      <Card url={url} />
     </div>
   );
 };
 
+//once I get the data needed from the backend(the scraped urls). I was going to map through the array of links and display the information into the cards components as individual cards
 export default App;

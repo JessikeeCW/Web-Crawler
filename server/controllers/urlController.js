@@ -11,7 +11,7 @@ urlController.postUrl = (req, res, next) => {
 
   //fetches urls within the given url
   const links = fetchData(url, limit);
-  console.log('links', links);
+
 
   //saves information to the db
   urlSchema.create({
