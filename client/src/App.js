@@ -5,9 +5,11 @@ import Card from './components/Card';
 import fetch from 'isomorphic-unfetch';
 
 const App = () => {
+  //uses hooks to update state
   const [url, setUrl] = useState('');
   const [limit, setLimit] = useState('');
 
+  //onchange set the limit or url
   const onChange = (e) => {
     if (e.target.name === 'url') {
       setUrl(e.target.value);
@@ -15,7 +17,8 @@ const App = () => {
       setLimit(e.target.value);
     }
   };
-
+  
+//onsubmit fetch the new route and post the information to the db
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch('http:///localhost:8000/search', {
@@ -23,9 +26,6 @@ const App = () => {
       headers: { 'Content-Type': 'Application/JSON' },
       body: JSON.stringify({ url, limit }),
     });
-    // const response = await res.json();
-    // setUrl('');
-    // setLimit('');
   };
 
   return (

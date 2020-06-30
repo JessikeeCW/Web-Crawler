@@ -21,7 +21,7 @@ mongoose
 const schema = new mongoose.Schema({
   title: { type: String },
   url: { type: String },
-  links: { type: Array },
+  links: [{ type: String}],
 });
 
 const UrlSchema = mongoose.model('UrlSchema', schema);
