@@ -16,12 +16,15 @@ mongoose
   .catch((err) => {
     console.log(`Error:${err}`);
   });
-
+//creates a new child model
+const childSchema = new mongoose.Schema({
+  title: { type: String },
+  link: { type: String },
+});
 //creates a new model instance
 const schema = new mongoose.Schema({
-  title: { type: String },
   url: { type: String },
-  links: [{ type: String}],
+  links: [childSchema],
 });
 
 const UrlSchema = mongoose.model('UrlSchema', schema);

@@ -8,6 +8,7 @@ const App = () => {
   //uses hooks to update state
   const [url, setUrl] = useState('');
   const [limit, setLimit] = useState('');
+  const [links, setLinks] = useState([]);
 
   //onchange set the limit or url
   const onChange = (e) => {
@@ -26,6 +27,8 @@ const App = () => {
       headers: { 'Content-Type': 'Application/JSON' },
       body: JSON.stringify({ url, limit }),
     });
+    const data = await res.json();
+    setLinks(...links, data.links);
   };
 
   return (
@@ -55,10 +58,11 @@ const App = () => {
           <input type="submit" value="submit" className="btn btn-outline-info" />
         </div>
       </form>
-      <Card url={url} />
+      {links.map((link) => (
+        <Card key={link._id} index={link._id} title={link.title} link={link.link} />
+      ))}
     </div>
   );
 };
 
-//once I get the data needed from the backend(the scraped urls). I was going to map through the array of links and display the information into the cards components as individual cards
 export default App;

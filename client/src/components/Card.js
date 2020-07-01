@@ -1,15 +1,15 @@
 import React from 'react';
 
 //contains the crawled url infomation and displays the card
-const Card = ({ index, title, url}) => {
- // renders out the cards based upon the information that was prop drilled down
+const Card = ({ index, title, link }) => {
+  // renders out the cards based upon the information that was prop drilled down
   return (
     <div className="row justify-content-center">
-      <div className="col-sm-11">
+      <div className="col-sm-5">
         <div className="card  m-2" key={index}>
-          <div className="card-body">
-            <a className="card-text" href={url}>
-              {/* {title} */} {url}
+          <div className="card-body" style={{ width: '50px;' }}>
+            <a className="card-title" href={link}>
+              {title}
             </a>
           </div>
         </div>
@@ -18,5 +18,4 @@ const Card = ({ index, title, url}) => {
   );
 };
 
-//The title was commented out and url was put as a visual place holder until I got the variables I needed from the backend from the scraped urls
 export default Card;

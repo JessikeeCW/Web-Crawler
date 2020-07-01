@@ -6,20 +6,24 @@ const fetchData = require('../scraper');
 const urlController = {};
 
 //adds initial information to the database
-urlController.postUrl = (req, res, next) => {
-  const { url, limit, title } = req.body;
+urlController.postUrl = async (req, res, next) => {
+  const { url, limit } = req.body;
 
   //fetches urls within the given url
-  const links = fetchData(url, limit);
-
+  const links = await fetchData(url, limit);
 
   //saves information to the db
   urlSchema.create({
     url: url,
-    title: title,
-    link: links,
+    links: links,
+  }, (err, links) => {
+      if (err)`Error in creating schema ${err}`;
+      else {
+        res.locals.links = links;
+        return next();
+      }
   });
 
-  next();
+  
 };
 module.exports = urlController;
